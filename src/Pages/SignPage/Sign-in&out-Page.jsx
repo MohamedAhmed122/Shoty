@@ -1,8 +1,9 @@
 import React from "react";
+import SignIn from "../../Components/Sign-in/Sign-in.component";
 
 const SignPage =()=>(
     <div>
-        <h1> Sign Contact</h1>
+        <SignIn />
     </div>
 )
 export default SignPage;
