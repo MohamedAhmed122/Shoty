@@ -16,7 +16,7 @@ const SignIn = () => {
     <div className="sign" >
       <h1>I already have an account</h1>
       <span>Sign in With your Email and Password</span>
-      <form onSubmit={handleSubmit} autocomplete="off">
+      <form onSubmit={handleSubmit} autoComplete="off">
         <FormInput
           type="email"
           value={email}
@@ -36,7 +36,7 @@ const SignIn = () => {
         />
 
         <CustomButton type="submit">Submit </CustomButton>
-        <CustomButton onClick={signInWithGoogle} >Submit </CustomButton>
+        <CustomButton isGoogleSignIn onClick={signInWithGoogle} >Sign In With Google </CustomButton>
       </form>
     </div>
   );

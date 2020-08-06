@@ -28,3 +28,9 @@ provider.setCustomParameters({ prompt: 'select_account' });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
+
+
+the third step is to do like so
+ <input onClick={signInWithGoogle} >Submit </input>
+
+ 
