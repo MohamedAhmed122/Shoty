@@ -21,8 +21,25 @@ const Navbar = ({ currentUser }) => (
           <Link to="/sign" className="option" onClick={() => auth.signOut()}>
             Sign Out
           </Link>
-          <img src={currentUser.photoURL} alt='photol'className='option' style={{height:'2.5rem', borderRadius: '50%',padding:'0.5rem' }}  />
-          <div style={{padding:0}} className="option">{currentUser.displayName}</div>
+          {currentUser.photoURL ? (
+            <Fragment>
+              <img
+                src={currentUser.photoURL}
+                alt="avatar"
+                className="option"
+                style={{
+                  height: "2.5rem",
+                  borderRadius: "50%",
+                  padding: "0.5rem",
+                }}
+              />
+              <div style={{ padding: 0 }} className="option">
+                {currentUser.displayName}
+              </div>
+            </Fragment>
+          ) : (
+            <div className="option">{currentUser.displayName}</div>
+          )}
         </Fragment>
       ) : (
         <Link className="option" to="/sign">

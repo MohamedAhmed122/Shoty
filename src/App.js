@@ -4,32 +4,43 @@ import "./App.css";
 import HomePage from "./Pages/HomePage/HomePage.component";
 import { Switch, Route } from "react-router-dom";
 import ContactPage from "./Pages/ContactPage/ContactPage";
-import SignPage from "./Pages/SignPage/Sign-in&out-Page";
+import SignPage from "./Pages/SignPage/Sign-In&Up-Page";
 import ShopPage from "./Pages/ShopPage/ShopPage";
 import Navbar from "./Layout/Navbar/navbar";
-import {auth} from './firebase/firebase.config'
+import { auth, createUserProfileDocument } from "./firebase/firebase.config";
 
 class App extends Component {
   constructor() {
     super();
-    this.state={
+    this.state = {
       currentUser: null,
-    }
+    };
   }
-  // subscription is Closed
-  unSubscribeFromAuth= null;
+  unsubscribeFromAuth = null;
 
-  componentDidMount(){
-    //subscription is OPened because we have user
-    this.unSubscribeFromAuth = auth.onAuthStateChanged(user=>{
-      this.setState({currentUser: user});
-      console.log(user)
-    })
+  componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          });
+
+          console.log(this.state);
+        });
+      }
+
+      this.setState({ currentUser: userAuth });
+    });
   }
 
-  componentWillUnmount(){
-    //subscription is Closed again because the component is unmount 
-    this.unSubscribeFromAuth();
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
   }
 
   render() {
