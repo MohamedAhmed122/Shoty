@@ -1,8 +1,3 @@
-### how To do google authentication to sign in and sign out using Firebase Without using Redux
-
-First you need to Create Project in the firebase 
-second Configure the Firebase Like that
-
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
