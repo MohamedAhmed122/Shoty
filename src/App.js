@@ -13,9 +13,6 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.config";
 import { setCurrentUser } from "./redux/user/User-action";
 
 class App extends Component {
-  constructor() {
-    super();
-  }
   unsubscribeFromAuth = null;
 
   componentDidMount() {
@@ -50,7 +47,7 @@ class App extends Component {
             exact
             path="/sign"
             render={() =>
-              this.props.currentUser ? <Redirect to = "/"/> : <SignPage />
+              this.props.currentUser ? <Redirect to="/" /> : <SignPage />
             }
           />
           <Route path="/shop" component={ShopPage} />

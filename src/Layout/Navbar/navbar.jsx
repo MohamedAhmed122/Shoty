@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./navbar.scss";
 import { auth } from "../../firebase/firebase.config";
+import CartIcon from "../../Components/Cart-Icon/Cart-Icon.component";
+import CartDropdown from "../../Components/CartDropdown/CartDropdown.component";
 
 const Navbar = ({ currentUser }) => (
   <div className="header">
@@ -29,7 +31,9 @@ const Navbar = ({ currentUser }) => (
           Sign In
         </Link>
       )}
+      <CartIcon />
     </div>
+    <CartDropdown />
   </div>
 );
 const mapStateToProps = ({ user: { currentUser } }) => ({
