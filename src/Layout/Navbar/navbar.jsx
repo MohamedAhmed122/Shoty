@@ -1,8 +1,12 @@
 import React, { Fragment } from "react";
-import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
 import "./navbar.scss";
+
+import { selectCurrentUser } from "../../redux/user/User-Selector";
+import { selectCartHidden } from "../../redux/Cart/Cart-Selector";
+import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.config";
 import CartIcon from "../../Components/Cart-Icon/Cart-Icon.component";
 import CartDropdown from "../../Components/CartDropdown/CartDropdown.component";
@@ -36,9 +40,9 @@ const Navbar = ({ currentUser, hidden }) => (
     {hidden ? null : <CartDropdown />}
   </div>
 );
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-  currentUser,
-  hidden,
+const mapStateToProps = (state) => ({
+  currentUser: selectCurrentUser(state),
+  hidden: selectCartHidden(state),
 });
 
 export default connect(mapStateToProps)(Navbar);
