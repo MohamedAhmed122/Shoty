@@ -37,7 +37,7 @@ const Navbar = ({ currentUser, hidden }) => (
       )}
       <CartIcon />
     </div>
-    {hidden ? null : <CartDropdown />}
+    {hidden ? <CartDropdown /> : null}
   </div>
 );
 const mapStateToProps = (state) => ({

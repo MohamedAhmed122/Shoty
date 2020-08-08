@@ -2,7 +2,7 @@ import { TOGGLE_CART_HIDDEN, ADD_ITEM_TO_CART } from "./Cart.Types";
 import { addItemToCart } from "./Card.utils";
 
 const INITIAL_STATE = {
-  hidden: true,
+  hidden: false,
   cartItems: [],
 };
 
