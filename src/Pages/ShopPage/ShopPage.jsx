@@ -1,14 +1,10 @@
 import React from "react";
-import SHOP_DATA from "./ShopData";
-import CollectionPreview from "../../Components/Collection-preview/Collection-preview.component";
+import CollectionOverview from "../../Components/Collection-overview/collectionOverview";
 
 const ShopPage = () => {
-  const collections = SHOP_DATA;
   return (
-    <div className='shop'>
-      {collections.map((collection) => (
-        <CollectionPreview key={collection.id} collection={collection} />
-      ))}
+    <div className="shop">
+      <CollectionOverview/>
     </div>
   );
 };
