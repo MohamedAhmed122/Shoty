@@ -6,6 +6,7 @@ import "./Collection-Item.styles.scss";
 import CustomButton from "../CustomButton/CustomButton";
 import { addItem } from "../../redux/Cart/Cart.Action";
 
+
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
   return (
@@ -26,4 +27,4 @@ const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItem(item)),
 });
 
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default  connect(null, mapDispatchToProps)(CollectionItem);
